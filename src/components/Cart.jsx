@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import data from "../assets/data";
+import { removeFromCart } from "../redux/redux";
 
 function Cart({ menu, cart, setCart }) {
   if (!menu)
@@ -32,7 +34,8 @@ function Cart({ menu, cart, setCart }) {
   );
 }
 
-function CartItem({ item, options, quantity, cart, setCart }) {
+function CartItem({ item, options, quantity }) {
+  const dispatch = useDispatch();
   return (
     <li className="cart-item">
       <div className="cart-item-info">
@@ -50,7 +53,7 @@ function CartItem({ item, options, quantity, cart, setCart }) {
       <button
         className="cart-item-delete"
         onClick={() => {
-          setCart(cart.filter((el) => item.id !== el.id));
+          dispatch(removeFromCart(item.id));
         }}
       >
         삭제
