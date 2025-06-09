@@ -1,8 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import data from "../assets/data";
 import { removeFromCart } from "../redux/redux";
 
-function Cart({ menu, cart, setCart }) {
+function Cart() {
+  const cart = useSelector((state) => state.cartReducer);
+  const menu = useSelector((state) => state.menuReducer);
   if (!menu)
     return (
       <div style={{ textAlign: "center", margin: "80px" }}>
@@ -22,8 +24,6 @@ function Cart({ menu, cart, setCart }) {
               item={allMenus.find((menu) => menu.id === el.id)}
               options={el.options}
               quantity={el.quantity}
-              cart={cart}
-              setCart={setCart}
             />
           ))
         ) : (

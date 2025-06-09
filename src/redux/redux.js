@@ -12,7 +12,16 @@ export const removeFromCart = (id) => {
   };
 };
 
-const cartReducer = () => {};
+const cartReducer = (state = [], action) => {
+  switch (action.type) {
+    case "addToCart":
+      return [...state, action.payload];
+    case "removeFromCart":
+      return state.filter((el) => action.payload.id !== el.id);
+    default:
+      return state;
+  }
+};
 
 const menuReducer = () => {};
 
