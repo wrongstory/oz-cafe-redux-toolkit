@@ -1,3 +1,4 @@
+import { combineReducers, legacy_createStore } from "redux";
 import data from "../assets/data";
 
 export const addToCart = (options, quantity, id) => {
@@ -29,4 +30,6 @@ const menuReducer = (state = data.menu, action) => {
   return state;
 };
 
-const rootReducer = () => {};
+const rootReducer = combineReducers({ cartReducer, menuReducer });
+
+export const store = legacy_createStore(rootReducer);
