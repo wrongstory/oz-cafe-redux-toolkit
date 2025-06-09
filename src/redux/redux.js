@@ -1,3 +1,5 @@
+import data from "../assets/data";
+
 export const addToCart = (options, quantity, id) => {
   return {
     type: "addToCart",
@@ -23,6 +25,8 @@ const cartReducer = (state = [], action) => {
   }
 };
 
-const menuReducer = () => {};
+const menuReducer = (state = data.menu, action) => {
+  return state;
+};
 
 const rootReducer = () => {};
